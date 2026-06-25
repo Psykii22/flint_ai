@@ -1,0 +1,11 @@
+node_modules
+.output
+.nitro
+.tanstack
+dist
+dist-ssr
+.env
+.env.local
+Dockerfile
+.git
+.github

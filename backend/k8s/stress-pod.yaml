@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-anomaly-pod
+  namespace: default
+  labels:
+    app: security-anomaly-pod
+spec:
+  containers:
+  - name: stress-container
+    image: ubuntu
+    # Installs stress-ng and runs 2 CPU hogs for 60 seconds
+    command: ["/bin/sh", "-c", "apt-get update && apt-get install -y stress-ng && stress-ng --cpu 2 --timeout 60s"]
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "128Mi"
+      # Omit limits to allow resource starvation simulation

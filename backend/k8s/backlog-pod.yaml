@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: worker-x-anomaly-pod
+  namespace: default
+  labels:
+    app: worker-x-anomaly
+spec:
+  containers:
+  - name: backlog-monitor
+    image: busybox
+    # Simulated busy loop printing backlog alerts
+    command: ["/bin/sh", "-c", "while true; do echo 'WARN: Massive incoming traffic spike detected!'; echo 'ERROR: Queue Explosion! Queue depth exceeded limits.' >&2; sleep 5; done"]
+    resources:
+      requests:
+        cpu: "50m"
+        memory: "64Mi"

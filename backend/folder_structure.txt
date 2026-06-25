@@ -1,0 +1,24 @@
+arcops-backend/
+├── .gitignore
+├── docker-compose.yml
+├── Dockerfile
+├── pyproject.toml         # uv uses this for dependencies
+├── README.md
+├── .env                   # Store your Supabase & TigerGraph Keys here
+├── src/
+│   ├── __init__.py
+│   ├── main.py            # FastAPI Entry Point
+│   ├── database/          # Postgres & TigerGraph Connection logic
+│   │   ├── postgres.py
+│   │   └── tigergraph.py
+│   ├── agents/            # ADK Agents & MCP Toolbox
+│   │   ├── billing_agent.py
+│   │   └── guard_agent.py
+│   ├── services/          # The "Pooler" logic for AWS/GCP/Azure
+│   │   ├── aws_fetcher.py
+│   │   ├── gcp_fetcher.py
+│   │   └── azure_fetcher.py
+│   │   └── login_register.py # full frontend communication logic
+│   └── utils/             # Mapping & Encryption logic
+│       └── normalizer.py
+└── tests/                 # For debugging your 9 accounts

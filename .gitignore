@@ -1,0 +1,37 @@
+# Dependency directories
+node_modules/
+.venv/
+__pycache__/
+
+# Local Environment Secrets (Very Important)
+.env
+.env.local
+.env.production
+.env*.local
+*.local
+
+# Build outputs
+dist/
+dist-ssr/
+.output/
+.vinxi/
+.tanstack/
+web-build/
+
+# IDE / System files
+.DS_Store
+.expo/
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Coral database engine and local telemetry data
+backend/coral/coral
+backend/coral/coral.exe
+backend/coral/data/
+*.zip
+*.log

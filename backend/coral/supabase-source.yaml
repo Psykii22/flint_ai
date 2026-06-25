@@ -1,0 +1,128 @@
+name: supabase
+version: 1.0.0
+description: "ArcOps operational data"
+dsl_version: 3
+backend: jsonl
+
+tables:
+  - name: pod_metrics
+    description: "Pod metrics data"
+    source:
+      location: "file:///d:/Hackathon/Finguard-v1/backend/coral/data/pod_metrics"
+    columns:
+      - name: id
+        type: Int64
+      - name: service_name
+        type: Utf8
+      - name: namespace
+        type: Utf8
+      - name: pod_name
+        type: Utf8
+      - name: replicas
+        type: Int64
+      - name: cpu_usage
+        type: Float64
+      - name: memory_usage
+        type: Float64
+      - name: restart_count
+        type: Int64
+      - name: status
+        type: Utf8
+      - name: timestamp
+        type: Utf8
+
+  - name: billing_events
+    description: "Billing events data"
+    source:
+      location: "file:///d:/Hackathon/Finguard-v1/backend/coral/data/billing_events"
+    columns:
+      - name: id
+        type: Int64
+      - name: service_name
+        type: Utf8
+      - name: estimated_cost
+        type: Float64
+      - name: anomaly_score
+        type: Float64
+      - name: severity
+        type: Utf8
+      - name: timestamp
+        type: Utf8
+
+  - name: deployments
+    description: "Deployments data"
+    source:
+      location: "file:///d:/Hackathon/Finguard-v1/backend/coral/data/deployments"
+    columns:
+      - name: id
+        type: Int64
+      - name: deployment_id
+        type: Utf8
+      - name: service_name
+        type: Utf8
+      - name: version
+        type: Utf8
+      - name: deployed_by
+        type: Utf8
+      - name: deployed_at
+        type: Utf8
+
+  - name: incidents
+    description: "Incidents data"
+    source:
+      location: "file:///d:/Hackathon/Finguard-v1/backend/coral/data/incidents"
+    columns:
+      - name: id
+        type: Int64
+      - name: service_name
+        type: Utf8
+      - name: severity
+        type: Utf8
+      - name: incident_type
+        type: Utf8
+      - name: message
+        type: Utf8
+      - name: resolved
+        type: Boolean
+      - name: created_at
+        type: Utf8
+
+  - name: worker_events
+    description: "Worker events data"
+    source:
+      location: "file:///d:/Hackathon/Finguard-v1/backend/coral/data/worker_events"
+    columns:
+      - name: id
+        type: Int64
+      - name: worker_name
+        type: Utf8
+      - name: retry_count
+        type: Int64
+      - name: failed_jobs
+        type: Int64
+      - name: queue_depth
+        type: Int64
+      - name: status
+        type: Utf8
+      - name: timestamp
+        type: Utf8
+
+  - name: firewall_events
+    description: "Simulated firewall trace data"
+    source:
+      location: "file:///d:/Hackathon/Finguard-v1/backend/coral/data/firewall_events"
+    columns:
+      - name: id
+        type: Int64
+      - name: timestamp
+        type: Utf8
+      - name: source_ip
+        type: Utf8
+      - name: target_node
+        type: Utf8
+      - name: protocol
+        type: Utf8
+      - name: action
+        type: Utf8
+      - name: event_desc
+        type: Utf8

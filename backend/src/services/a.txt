@@ -1,0 +1,51 @@
+Example: POST /api/connect/gcp
+Request JSON (what the client sends)
+{
+  "label": "Acme GCP billing access",
+  "provider": "gcp",
+  "credentials": {
+    "project_id": "acme-prod-123",
+    "billing_account_id": "01A2BC-345DEF-678GHI",
+    "dataset_id": "billing_dataset"
+  }
+}
+
+What backend stores (DB record) - UNENCRYPTED credentials JSON
+{
+  "id": "uuid",
+  "user_id": "uuid",
+  "provider": "gcp",
+  "account_name": "Acme GCP billing access",
+  "external_account_id": "acme-prod-123",
+  "credentials": "{\"project_id\": \"acme-prod-123\", \"billing_account_id\": \"01A2BC-345DEF-678GHI\", \"dataset_id\": \"billing_dataset\"}",
+  "is_active": false,
+  "last_synced_at": null,
+  "created_at": "timestamp"
+}
+
+---
+
+Example: POST /api/connect/aws
+Request JSON (what the client sends)
+{
+  "label": "Acme Corp billing viewer",
+  "provider": "aws",
+  "credentials": {
+    "role_arn": "arn:aws:iam::123456789012:role/ArcOps-BillingViewer",
+    "external_id": "XxYz123",
+    "region": "us-east-1"
+  }
+}
+
+What backend stores (DB record) - UNENCRYPTED credentials JSON
+{
+  "id": "uuid",
+  "user_id": "uuid",
+  "provider": "aws",
+  "account_name": "Acme Corp billing viewer",
+  "external_account_id": "123456789012",
+  "credentials": "{\"role_arn\": \"arn:aws:iam::123456789012:role/ArcOps-BillingViewer\", \"external_id\": \"XxYz123\", \"region\": \"us-east-1\"}",
+  "is_active": false,
+  "last_synced_at": null,
+  "created_at": "timestamp"
+}

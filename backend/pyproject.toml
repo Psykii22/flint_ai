@@ -1,0 +1,46 @@
+[project]
+name = "src"
+version = "0.1.0"
+description = "Multi-cloud FinOps agent"
+requires-python = ">=3.11"
+
+dependencies = [
+    # Core — brings fastapi, uvicorn, httpx, pydantic, sqlalchemy,
+    # google-auth, google-cloud-bigquery, google-cloud-storage,
+    # google-cloud-aiplatform, google-cloud-secret-manager,
+    # google-genai, python-dotenv, opentelemetry and 30+ more
+    "google-adk>=1.28.0",
+    # AWS
+    "boto3>=1.34.0",
+    # Graph intelligence
+    "pyTigerGraph>=1.8.0",
+    # Scheduler
+    "apscheduler>=3.11.0",
+    # Auth + billing
+    "python-jose[cryptography]>=3.3.0",
+    "stripe>=9.0.0",
+    # Pin away from compromised versions
+    "litellm>=1.30.0,!=1.82.7,!=1.82.8",
+    # GCP Monitoring — metrics polling
+    "google-cloud-monitoring>=2.22.0",
+    # Supabase client
+    "supabase>=2.4.0",
+    "gotrue>=2.12.4",
+    "email-validator>=2.1.0",
+    "fastapi>=0.135.3",
+    "requests>=2.33.1",
+    "google>=3.0.0",
+    "psycopg2-binary>=2.9.11",
+    "redis>=7.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.4.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

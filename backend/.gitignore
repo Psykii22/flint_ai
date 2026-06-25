@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+
+# Docker
+.dockerignore
+docker-compose.dev.yml
+
+# OS
+.DS_Store

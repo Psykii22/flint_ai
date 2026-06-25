@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-x
+spec:
+  replicas: 20
+  selector:
+    matchLabels:
+      app: worker-x
+  template:
+    metadata:
+      labels:
+        app: worker-x
+    spec:
+      containers:
+      - name: worker-x
+        image: python:3.11
+        command:
+          - "python"
+          - "-c"
+          - |
+            import time, sys
+            print("INFO: Starting worker queue processing...")
+            time.sleep(2)
+            while True:
+                print("WARN: Massive incoming traffic spike detected!")
+                print("ERROR: Queue Explosion! Queue depth exceeded limits.", file=sys.stderr)
+                print("FATAL: OutOfMemoryError: Failed to allocate buffer. CrashLoopBackOff initiated.", file=sys.stderr)
+                time.sleep(2)
+                
+                # CPU spike logic
+                x = 0
+                for i in range(5000000):
+                    x += i
